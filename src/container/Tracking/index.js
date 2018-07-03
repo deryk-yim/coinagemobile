@@ -4,7 +4,7 @@ import Svg, { Path, Polygon } from 'react-native-svg';
 import Item from '../../component/LegendList/Item';
 import LegendList from '../../component/LegendList/LegendList';
 import moment from 'moment';
-import Layout from '../../component/Layout/Layout';
+import Layout from '../Layout/Layout';
 
 import { TRACKING_DATA } from './test-data.js';
 
@@ -20,7 +20,7 @@ export default class Tracking extends Component {
     });
 
     return (
-      <Layout>
+      <Layout navigation={this.props.navigation}>
         <View style={[container, { flex: 0.85, width: SCREEN_WIDTH }]}>
             <View style={{ flex: 0.1, flexDirection: 'row', alignItems: 'center' }}>
               <View style={{ width: SCREEN_WIDTH * 0.73 }}>

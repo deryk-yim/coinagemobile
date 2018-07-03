@@ -9,7 +9,7 @@ import {
 import ScrollableList from '../../component/ScrollableList/ScrollableList';
 import Label from '../../component/Label/Label';
 import Select from '../../component/Select/Select';
-import Layout from '../../component/Layout/Layout'
+import Layout from '../Layout/Layout'
 
 import { DEFAULT_CATEGORIES, SORTBY } from '../../constants/defaults';
 
@@ -26,21 +26,21 @@ export default class CategoryScreen extends PureComponent {
         } = styles;
 
         return (
-            <Layout>
-                <Label
-                    style={[placeholderSections, { flex: 0.1 }]}
-                    value={'Navigation'}
-                />
-
-                <View style={[section, { flex: 0.7 }]}>
-                    <Label
-                        style={{ flex: 0.15 }}
-                        textStyle={categoryText}
-                        value={'CATEGORY'}
-                    />
-                    <Select
-                        data={SORTBY}
-                    />
+            <Layout 
+                navigation={this.props.navigation}
+                bgColors={['#934CDB', '#F82279']}
+                bgStart={{ x: 0, y: 1 }}
+                bgEnd={{ x: 1, y: 0}}
+            >
+                <View style={[section, { flex: 1}]}>
+                    <View style={{flexDirection: 'row'}}>
+                        <Label
+                            style={{ flex: 0.5}}
+                            textStyle={categoryText}
+                            value={'CATEGORY'}
+                        />
+                        <Select data={SORTBY} style={{flex: 0.5, alignItems: 'flex-end'}}/>
+                    </View>
 
                     <ScrollableList
                         data={DEFAULT_CATEGORIES}
@@ -58,11 +58,6 @@ export default class CategoryScreen extends PureComponent {
                         )}
                     />
                 </View>
-
-                <Label
-                    style={[placeholderSections, { flex: 0.2 }]}
-                    value={'Controls'}
-                />
             </Layout>
         )
     }
@@ -74,7 +69,8 @@ const styles = StyleSheet.create({
         width: SCREEN_WIDTH
     },
     section: {
-        padding: SCREEN_WIDTH * 0.1
+        padding: SCREEN_WIDTH * 0.1,
+        width: SCREEN_WIDTH
     },
     categoryText: {
         fontSize: 24,

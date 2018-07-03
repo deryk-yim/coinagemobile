@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import React, { PureComponent } from 'react';
 import Knob from '../../component/Knob/Knob';
 import Circle from '../../component/Circle/Circle';
-import Layout from '../../component/Layout/Layout';
+import Layout from '../Layout/Layout';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -12,11 +12,12 @@ export default class AmountScreen extends PureComponent {
         this.state = {
             value: 0,
         }
+        console.log(this.props)
     }
 
     render() {
         return (
-            <Layout>
+            <Layout navigation={this.props.navigation}>
                 <Circle size={SCREEN_WIDTH * 0.6375}>
                     <Knob
                         fontSize={32}

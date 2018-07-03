@@ -8,7 +8,7 @@ export default class Background extends PureComponent {
         colors: PropTypes.arrayOf(PropTypes.string),
         start: PropTypes.object,
         end: PropTypes.object,
-        style: PropTypes.object
+        style: PropTypes.number
     }
     static defaultProps = {
         colors: THEME_COLOR.backgroundGradient,

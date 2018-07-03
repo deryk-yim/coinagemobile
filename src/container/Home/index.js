@@ -4,7 +4,7 @@ import AnimatedDialGraph from '../../component/DialGraph/AnimatedDialGraph.js';
 import Circle from '../../component/Circle/Circle.js';
 import Background from '../../component/Background/Background.js';
 import Svg, { Path, Polygon } from 'react-native-svg';
-import Layout from '../../component/Layout/Layout';
+import Layout from '../Layout/Layout';
 
 import { THEME_COLOR } from '../../constants/theme.js'; 
 
@@ -16,7 +16,7 @@ class Home extends React.Component {
 
 
         return (
-            <Layout>
+            <Layout navigation={this.props.navigation}>
                 <View style={[container, { flex: 0.85, width: SCREEN_WIDTH }]} >
                     <View style={[container, { flex: 0.7, position: 'relative' }]}>
                         <View style={{ position: 'absolute' }}>

@@ -30,7 +30,7 @@ export default class Select extends Component {
             return React.cloneElement(this.renderItem(item), props)
         })
         return (
-            <ScrollView style={[styles.dropdown, this.props.style]}>
+            <ScrollView style={styles.dropdown}>
                 {dropdownItems}
             </ScrollView>
         )
@@ -46,10 +46,10 @@ export default class Select extends Component {
 
     render() {
         const { isHidden } = this.state
-            , { data, labelStyle } = this.props
+            , { data, labelStyle, style } = this.props
             , { touchableOpacity, touchableOpacityText } = styles;
         return (
-            <View style={{ position: 'relative', height: 50 }}>
+            <View style={[{ position: 'relative', height: 50 }, style]}>
                 {
                     isHidden ?
                         <TouchableOpacity
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
     dropdown: {
         position: 'absolute',
         padding: 10,
-        width: 100,
         backgroundColor: '#ffffff',
         shadowColor: '#000',
         shadowOffset: { width: 1, height: 1 },
