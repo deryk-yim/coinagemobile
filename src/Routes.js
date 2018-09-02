@@ -1,10 +1,12 @@
 import Home from './container/Home/index'
-import AmountScreen from './container/AddTransaction/AmountScreen';
+import AddTransaction from './container/AddTransaction/AddTransaction';
 import CategoryScreen from './container/AddTransaction/CategoryScreen';
 import Tracking from './container/Tracking/index';
 import SideMenu from './container/Layout/SideMenu';
 import { createDrawerNavigator } from 'react-navigation';
 import React from 'react';
+
+import Test from './container/AddTransaction/Test';
 
 const routes = {
     Home: {
@@ -15,7 +17,7 @@ const routes = {
     AddTransaction: {
         label: 'TRANSACTION',
         sideMenu: true,
-        screen: AmountScreen
+        screen: AddTransaction
     },
     Tracking: {
         label: 'TRACKING',
@@ -45,14 +47,14 @@ const routes = {
     Settings: {
         label: 'SETTINGS',
         sideMenu: true,
-        screen: CategoryScreen //placecholder
+        screen: Test //placecholder
     },
 }
 
 export default createDrawerNavigator(
     routes
 , {
-    initialRouteName: 'Categories',
+    initialRouteName: 'Settings',
     contentComponent: ({navigation}) => (
         <SideMenu 
             navigation={navigation} 

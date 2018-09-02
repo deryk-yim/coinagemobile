@@ -88,6 +88,7 @@ class Home extends React.Component {
                     <View style={{ flex: 0.15 }}>
                         <TouchableOpacity
                             style={{ justifyContent: 'center', alignItems: 'center', position: 'relative' }}
+                            onPress={() => { this.props.navigation.navigate('AddTransaction') }}
                         >
                             <Svg width={50} height={50}>
                                 <Polygon fill="#fff" points="48.242,35.122 45.414,37.95 24.828,17.364 4.242,37.95 1.414,35.122 24.828,11.707" />
@@ -95,7 +96,7 @@ class Home extends React.Component {
                             </Svg>
                             <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 14 }}>
                                 ADD
-                                </Text>
+                            </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
