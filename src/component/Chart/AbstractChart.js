@@ -19,7 +19,7 @@ export default class AbstractChart extends Component {
             )
         });
     }
-
+    
     renderHorizontalLabels = config => {
         const { count, data, height, paddingTop, paddingRight, yLabelsOffset = 25 } = config;
         return [...new Array(count)].map((_, i) => {
@@ -38,26 +38,7 @@ export default class AbstractChart extends Component {
             )
         });
     }
-    /*
-    renderVerticalLabels = config => {
-        const { labels = [], width, height, paddingRight, paddingTop, horizontalOffset = 0 } = config;
-        const fontSize = 12;
-        return labels.map((label, i) => {
-            return (
-                    <Text
-                        key={Math.random()}
-                        x={((width - paddingRight) / labels.length * (i)) + paddingRight + horizontalOffset}
-                        y={(height * 3 / 4) + paddingTop + (fontSize * 2)}
-                        fontSize={fontSize}
-                        fill={this.props.chartConfig.color(0.5)}
-                        textAnchor="middle"
-                    >
-                        {label}
-                    </Text>
-            )
-        });
-    }
-    */
+    
     renderVerticalLines = config => {
         const { data, width, height, paddingTop, paddingRight } = config;
         return [...new Array(data.length)].map((_, i) => {

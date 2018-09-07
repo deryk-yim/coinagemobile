@@ -21,9 +21,14 @@ export default class Tracking extends Component {
       Math.random() * 1000,
       Math.random() * 1000,
       Math.random() * 1000,
-      Math.random() * 1000,
-      Math.random() * 1000
-    ]
+    ],
+    labels: [
+      { title: 'APR', description: '8-15'},
+      { title: 'APR', description: '16-22' },
+      { title: 'APR', description: '23-30' },
+      { title: 'MAY', description: '1-7' },
+      { title: 'MAY', description: '8-15' },
+    ],
   }
   render() {
     const { container } = styles;
@@ -55,13 +60,13 @@ export default class Tracking extends Component {
             <View style={{ flex: 0.63, flexDirection: 'column', alignItems:'center' }}>
               <BarChart
                 data={{
-                  labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'],
+                  labels: this.state.labels,
                   datasets: [{
                     data: this.state.data
                   }]
                 }}
                 width={SCREEN_WIDTH * 0.93} 
-                height={350}
+                height={450}
                 chartConfig={{
                   color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                 }}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { Svg, Rect } from 'react-native-svg';
+import { View, TouchableOpacity } from 'react-native';
+import { Svg, Rect, Text } from 'react-native-svg';
 import AbstractChart from './AbstractChart';
+
 
 const barWidth = 32;
 
@@ -25,43 +26,59 @@ export default class BarChart extends AbstractChart {
 
     // use this to draw the X labels
     renderBarTops = config => {
-        const { data, width, height, paddingTop, paddingRight } = config;
+        const { data, width, height, paddingTop, paddingRight, horizontalOffset = 0 } = config;
         return data.map((x , i) => {
             const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)))
             return (
                 <Rect
                     key={Math.random()}
-                    x={(paddingRight + (i * (width - paddingRight) / data.length)) + (barWidth / 2)}
-                    y={(((height / 4 * 3) - barHeight) + paddingTop)}
-                    width={barWidth}
-                    height={2}
+                    x={(paddingRight + (i * (width - paddingRight) / data.length)) + (barWidth / 3)}
+                    y={(((height / 4 * 3) - barHeight) - 20)}
+                    width={ barWidth * 1.4}
+                    height={30}
                     fill={this.props.chartConfig.color(0.6)}
                 />
             )
         });   
     }
     
+    //x={(paddingRight + (i * (width - paddingRight) / data.length)) + (barWidth / 2)}
+
     renderVerticalLabels = config => {
-        const { labels = [], width, height, paddingRight, paddingTop, horizontalOffset = 0 } = config;
-        const fontSize = 12;
-        return labels.map((label, i) => {
-            return (
-                <TouchableOpacity>
+        const { labels = [], data, width, height, paddingRight, paddingTop, horizontalOffset = 0 } = config;
+        const fontSize = 16;
+        return data.map((x, i) => {
+            const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)))
+            //console.log(labels[i]);
+            /*
+            <View>
                     <Text
                         key={Math.random()}
                         x={((width - paddingRight) / labels.length * (i)) + paddingRight + horizontalOffset}
-                        y={(height * 3 / 4) + paddingTop + (fontSize * 2)}
+                        y={(((height / 4 * 3) - barHeight) - 5)}
                         fontSize={fontSize}
-                        fill={this.props.chartConfig.color(0.5)}
+                        fill={'#475893'}
                         textAnchor="middle"
                     >
-                        {label}
+                        {labels[i]}
                     </Text>
-                </TouchableOpacity>
+            */
+            return (
+                    <Text
+                        key={Math.random()}
+                        x={((width - paddingRight) / labels.length * (i)) + paddingRight + horizontalOffset}
+                        y={(((height / 4 * 3) - barHeight) - 5)}
+                        fontSize={fontSize}
+                        fill={'#475893'}
+                        textAnchor="middle"
+                    >
+                        {labels[i]}
+                    </Text>
             )
         });
     }
-    
+    //y={(((height / 4 * 3) - barHeight) + paddingTop)}
+
     render(){
         const paddingTop = 16;
         const paddingRight = 64;
