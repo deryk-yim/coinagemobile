@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { Svg, Rect, Text } from 'react-native-svg';
+import { Svg, Rect, Text, TSpan } from 'react-native-svg';
 import AbstractChart from './AbstractChart';
 
 
@@ -33,50 +33,42 @@ export default class BarChart extends AbstractChart {
                 <Rect
                     key={Math.random()}
                     x={(paddingRight + (i * (width - paddingRight) / data.length)) + (barWidth / 3)}
-                    y={(((height / 4 * 3) - barHeight) - 20)}
+                    y={(((height / 4 * 3) - barHeight) - 27)}
+                    rx={5}
+                    ry={5}
                     width={ barWidth * 1.4}
-                    height={30}
+                    height={40}
                     fill={this.props.chartConfig.color(0.6)}
                 />
             )
         });   
     }
-    
-    //x={(paddingRight + (i * (width - paddingRight) / data.length)) + (barWidth / 2)}
 
     renderVerticalLabels = config => {
-        const { labels = [], data, width, height, paddingRight, paddingTop, horizontalOffset = 0 } = config;
+        const { labels = [], data, width, height, paddingRight, horizontalOffset = 0 } = config;
         const fontSize = 16;
         return data.map((x, i) => {
-            const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)))
-            //console.log(labels[i]);
-            /*
-            <View>
-                    <Text
-                        key={Math.random()}
-                        x={((width - paddingRight) / labels.length * (i)) + paddingRight + horizontalOffset}
-                        y={(((height / 4 * 3) - barHeight) - 5)}
-                        fontSize={fontSize}
-                        fill={'#475893'}
-                        textAnchor="middle"
-                    >
-                        {labels[i]}
-                    </Text>
-            */
+            const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)));
+            const label = labels[i];
+            const textWidth = ((width - paddingRight) / labels.length * (i)) + paddingRight + horizontalOffset;
+            const textHeight = (((height / 4 * 3) - barHeight) - 5)
             return (
                     <Text
                         key={Math.random()}
-                        x={((width - paddingRight) / labels.length * (i)) + paddingRight + horizontalOffset}
-                        y={(((height / 4 * 3) - barHeight) - 5)}
+                        x={textWidth}
+                        y={textHeight - 5}
                         fontSize={fontSize}
+                        fontWeight='bold'
                         fill={'#475893'}
-                        textAnchor="middle"
+                        textAnchor='middle'
                     >
-                        {labels[i]}
+                        <TSpan fontSize={16} y={textHeight - 5}>{label.title}</TSpan>
+                        <TSpan fontSize={14} y={textHeight + 10} x={textWidth} >{label.description}</TSpan>
                     </Text>
             )
         });
     }
+    
     //y={(((height / 4 * 3) - barHeight) + paddingTop)}
 
     render(){
