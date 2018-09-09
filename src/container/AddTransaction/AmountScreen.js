@@ -12,29 +12,27 @@ export default class AmountScreen extends PureComponent {
         this.state = {
             value: 0,
         }
-        console.log(this.props)
     }
 
     render() {
         return (
-            <Layout navigation={this.props.navigation}>
-                <Circle size={SCREEN_WIDTH * 0.6375}>
-                    <Knob
-                        fontSize={32}
-                        textColor={'#ffffff'}
-                        fullRotationValue={50}
-                        value={this.state.value}
-                        borderStrokeColor={'transparent'}
-                        indicatorColor={'#ffffff'}
-                        showIndicator={true}
-                        indicatorRadius={5}
-                        indicatorOrbitRadius={0.75}
-                        onValueChange={(value) => {
-                            this.setState({ value: value })
-                        }}
-                    />
-                </Circle>
-            </Layout>
+            <Circle size={SCREEN_WIDTH * 0.6375}>
+                <Knob
+                    fontSize={32}
+                    textColor={'#ffffff'}
+                    fullRotationValue={50}
+                    value={this.state.value}
+                    borderStrokeColor={'transparent'}
+                    indicatorColor={'#ffffff'}
+                    showIndicator={true}
+                    indicatorRadius={5}
+                    indicatorOrbitRadius={0.75}
+                    onValueChange={(value) => {
+                        this.setState({ value: value })
+                        this.props.onValueChange(value)
+                    }}
+                />
+            </Circle>
         )
     }
 }

@@ -54,7 +54,7 @@ const routes = {
 export default createDrawerNavigator(
     routes
 , {
-    initialRouteName: 'Settings',
+    initialRouteName: 'AddTransaction',
     contentComponent: ({navigation}) => (
         <SideMenu 
             navigation={navigation} 

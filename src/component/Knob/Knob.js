@@ -122,7 +122,6 @@ export default class Knob extends PureComponent {
                 after: grantAngle + 90,
                 before: grantAngle - 90,
             }
-        console.log(grantAngle)
         this.setState({ quadrant }, () => this.setValue(grantAngle));
     }
 
