@@ -49,7 +49,16 @@ export default class AddTransaction extends Component {
                     bgStart={{ x: 0, y: 1 }}
                     bgEnd={{ x: 1, y: 0 }}
                 >
-                    <DetailsScreen navigation={this.props.navigation} />
+                    <DetailsScreen 
+                        navigation={this.props.navigation}
+                        onDateChange={(date)=>{
+                            this.setState({ date: date })
+                        }}
+                        onNameChange={(name)=>{
+                            this.setState({ name: name })
+                        }}
+                        onSubmit={() => console.log(this.state)}
+                    />
                 </Layout>
             </Swiper>
         )

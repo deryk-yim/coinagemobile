@@ -14,6 +14,11 @@ const Div = (Props) => {
             width: Props.width,
             height: Props.height,
             backgroundColor: Props.backgroundColor,
+            padding: Props.padding,
+            paddingTop: Props.paddingTop,
+            paddingRight: Props.paddingRight,
+            paddingBottom: Props.paddingBottom,
+            paddingLeft: Props.paddingLeft,
         }
     })
     return (
@@ -42,5 +47,7 @@ Div.defaultProps = {
     width: SCREEN_WIDTH,
     height: undefined,
     backgroundColor: 'transparent',
+    padding: 0,
+    margin: 0
 }
 
