@@ -10,7 +10,8 @@ export default class BarChart extends AbstractChart {
     renderBars = config => {
         const { data, width, height, paddingTop, paddingRight } = config;
         return data.map((x, i) => {
-            const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)));
+            //const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)));
+            const barHeight = height / 4 * 3 * (x / Math.max(...data));
             return (
                 <Rect
                     key={Math.random()}
@@ -74,9 +75,14 @@ export default class BarChart extends AbstractChart {
     render(){
         const paddingTop = 16;
         const paddingRight = 64;
-        const { width, height, data, style = {}} = this.props;
+        const { width, height, data, labels, style = {}} = this.props;
         const {borderRadius = 0 } = style;
         const config = { width, height };
+        let maxAmount = 0;
+        let lineCount = 5;
+
+        maxAmount = Math.max(...data) - (Math.max(...data) % 100) + 100;
+        
         return (
             <View style={style}>
                 <Svg height={height} width={width}>
@@ -93,34 +99,34 @@ export default class BarChart extends AbstractChart {
                     />
                     {this.renderHorizontalLines({
                         ...config,
-                        count: 8,
+                        count: lineCount,
                         paddingTop
                     })}
                     {this.renderHorizontalLabels({
                         ...config,
-                        count: 8,
-                        data: data.datasets[0].data,
+                        count: lineCount,
+                        data: [maxAmount, ...data],
                         paddingTop,
                         paddingRight
                     })}
                     {this.renderBarTops({
                         ...config,
-                        data: data.datasets[0].data,
+                        data: data,
                         paddingRight,
                         paddingTop,
                         horizontalOffset: barWidth
                     })}
                     {this.renderVerticalLabels({
                         ...config,
-                        labels: data.labels,
-                        data: data.datasets[0].data,
+                        labels: labels,
+                        data: data,
                         paddingRight,
                         paddingTop,
                         horizontalOffset: barWidth
                     })}
                     {this.renderBars({
                         ...config,
-                        data: data.datasets[0].data,
+                        data: data,
                         paddingTop,
                         paddingRight
                     })}

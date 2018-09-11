@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { LinearGradient, Line, Text, Defs, Stop } from 'react-native-svg';
 
 export default class AbstractChart extends Component {
-    // need to take max of data, round it to the nearest 50 or 100, and then do the count
     renderHorizontalLines = config => {
         const { count, width, height, paddingTop, paddingRight } = config;
+        const ceiling = height - paddingTop;
         return [...new Array(count)].map((_, i) => {
+            console.log(height);
             return (
                 <Line
                     key={Math.random()}
                     x1={paddingRight}
-                    y1={(height / 4 * i) + paddingTop}
+                    y1={(ceiling / count * i )+ paddingTop}
                     x2={width}
-                    y2={(height / 4 * i) + paddingTop}
+                    y2={(ceiling / count * i) + paddingTop}
                     stroke={this.props.chartConfig.color(0.2)}
                     strokeWidth={1}
                 />
@@ -22,17 +23,19 @@ export default class AbstractChart extends Component {
     
     renderHorizontalLabels = config => {
         const { count, data, height, paddingTop, paddingRight, yLabelsOffset = 25 } = config;
+        const total = [0, ...data];
+
         return [...new Array(count)].map((_, i) => {
             return (
                 <Text
                     key={Math.random()}
                     x={paddingRight - yLabelsOffset}
                     textAnchor="end"
-                    y={(height * 3 / 4) - ((height - paddingTop) / count * i ) + 12}
+                    y={(height * 3 / 4) - ((height - paddingTop) / count * i ) + 20}
                     fontSize={12}
                     fill={this.props.chartConfig.color(0.5)}
                 > {
-                    (((Math.max(...data) - Math.min(...data)) / (count - 1) * i) + Math.min(...data)).toFixed(0)
+                    (Math.max(...total) / (count - 1) * i).toFixed(0)
                 }
                 </Text>
             )

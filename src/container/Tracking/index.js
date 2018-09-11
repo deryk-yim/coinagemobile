@@ -16,11 +16,11 @@ export default class Tracking extends Component {
 
   state = {
     data: [
-      Math.random() * 1000,
-      Math.random() * 1000,
-      Math.random() * 1000,
-      Math.random() * 1000,
-      Math.random() * 1000,
+      250,
+      400,
+      350,
+      752,
+      940,
     ],
     labels: [
       { title: 'APR', description: '8-15'},
@@ -59,14 +59,10 @@ export default class Tracking extends Component {
             </View>
             <View style={{ flex: 0.63, flexDirection: 'column', alignItems:'center' }}>
               <BarChart
-                data={{
-                  labels: this.state.labels,
-                  datasets: [{
-                    data: this.state.data
-                  }]
-                }}
+                data={this.state.data}
+                labels={this.state.labels}
                 width={SCREEN_WIDTH * 0.93} 
-                height={450}
+                height={425}
                 chartConfig={{
                   color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                 }}
