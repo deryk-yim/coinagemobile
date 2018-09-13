@@ -10,13 +10,13 @@ export default class BarChart extends AbstractChart {
     renderBars = config => {
         const { data, width, height, paddingTop, paddingRight } = config;
         return data.map((x, i) => {
-            //const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)));
             const barHeight = height / 4 * 3 * (x / Math.max(...data));
+            
             return (
                 <Rect
                     key={Math.random()}
                     x={(paddingRight + (i * (width - paddingRight) / data.length) + (barWidth / 2))}
-                    y={(((height / 4 * 3) - barHeight) + paddingTop)}
+                    y={(((height / 4 * 3) - barHeight) + 26)}
                     width={barWidth}
                     height={barHeight}
                     fill="url(#fillShadowGradient)"
