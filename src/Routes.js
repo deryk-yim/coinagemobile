@@ -1,12 +1,11 @@
 import Home from './container/Home/index'
 import AddTransaction from './container/AddTransaction/AddTransaction';
 import CategoryScreen from './container/AddTransaction/CategoryScreen';
+import RecurringBills from './container/RecurringBills/RecurringBills';
 import Tracking from './container/Tracking/index';
 import SideMenu from './container/Layout/SideMenu';
 import { createDrawerNavigator } from 'react-navigation';
 import React from 'react';
-
-import Test from './container/AddTransaction/Test';
 
 const routes = {
     Home: {
@@ -32,7 +31,7 @@ const routes = {
     RecurringBills: {
         label: 'RECURRING BILLS',
         sideMenu: true,
-        screen: Tracking //placecholder
+        screen: RecurringBills
     },
     LifeExpense: {
         label: 'LIFE EXPENSE',
@@ -47,14 +46,14 @@ const routes = {
     Settings: {
         label: 'SETTINGS',
         sideMenu: true,
-        screen: Test //placecholder
+        screen: CategoryScreen //placecholder
     },
 }
 
 export default createDrawerNavigator(
     routes
 , {
-    initialRouteName: 'AddTransaction',
+    initialRouteName: 'RecurringBills',
     contentComponent: ({navigation}) => (
         <SideMenu 
             navigation={navigation} 

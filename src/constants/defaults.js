@@ -11,6 +11,16 @@ export const DEFAULT_CATEGORIES = [
     'Snack',
 ]
 
+export const RECURRING_BILLS = [
+    'Telus Internet',
+    'Rent',
+    'Spotify',
+    'Netflix',
+    'Crunchyroll',
+    'Pornhub',
+    'VPN'
+]
+
 export const SORTBY = [
     {
         label: 'POPULAR',

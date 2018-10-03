@@ -16,7 +16,6 @@ export default class DetailsScreen extends Component {
         }
     }
 
-    
     render() {
         styles = StyleSheet.create({
             text: {
@@ -57,7 +56,7 @@ export default class DetailsScreen extends Component {
                             }}
                         />
                     </Div>
-                    <Div backgroundColor={'red'} flex={0.3}>
+                    <Div flex={0.3}>
                         <Div justifyContent={'center'}>
                             <Text style={{
                                 position: 'absolute', 
@@ -69,7 +68,7 @@ export default class DetailsScreen extends Component {
                             <DatePicker
                                 showIcon={false}
                                 hideText={true}
-                                style={{ width: 200 }}
+                                style={{ width: 250 }}
                                 date={this.state.date}
                                 mode="date"
                                 placeholder="select date"
