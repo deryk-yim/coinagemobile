@@ -53,7 +53,7 @@ const routes = {
 export default createDrawerNavigator(
     routes
 , {
-    initialRouteName: 'RecurringBills',
+    initialRouteName: 'Tracking',
     contentComponent: ({navigation}) => (
         <SideMenu 
             navigation={navigation} 
