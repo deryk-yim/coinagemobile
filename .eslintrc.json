@@ -1,0 +1,25 @@
+{
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "env":{
+        "browser": true
+    },
+    "rules": {
+        "no-underscore-dangle": "off",
+        "import/no-named-as-default": 0,
+        "import/named": 0,
+        "react/jsx-filename-extension": 0,
+        "react/prefer-stateless-function": 1
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true
+        }
+    }
+}

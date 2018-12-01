@@ -6,7 +6,6 @@ export default class AbstractChart extends Component {
         const { count, width, height, paddingTop, paddingRight } = config;
         const ceiling = height - paddingTop;
         return [...new Array(count)].map((_, i) => {
-            console.log(height);
             return (
                 <Line
                     key={Math.random()}

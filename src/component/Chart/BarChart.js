@@ -25,11 +25,11 @@ export default class BarChart extends AbstractChart {
         });
     }
 
-    // use this to draw the X labels
-    renderBarTops = config => {
-        const { data, width, height, paddingTop, paddingRight, horizontalOffset = 0 } = config;
+    renderLabelCards = config => {
+        const { data, width, height, paddingRight } = config;
         return data.map((x , i) => {
-            const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)))
+            //const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)))
+            const barHeight = height / 4 * 3 * (x / Math.max(...data));
             return (
                 <Rect
                     key={Math.random()}
@@ -49,7 +49,8 @@ export default class BarChart extends AbstractChart {
         const { labels = [], data, width, height, paddingRight, horizontalOffset = 0 } = config;
         const fontSize = 16;
         return data.map((x, i) => {
-            const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)));
+            //const barHeight = height / 4 * 3 * ((x - Math.min(...data)) / (Math.max(...data) - Math.min(...data)));
+            const barHeight = height / 4 * 3 * (x / Math.max(...data));
             const label = labels[i];
             const textWidth = ((width - paddingRight) / labels.length * (i)) + paddingRight + horizontalOffset;
             const textHeight = (((height / 4 * 3) - barHeight) - 5)
@@ -69,9 +70,8 @@ export default class BarChart extends AbstractChart {
             )
         });
     }
-    
     //y={(((height / 4 * 3) - barHeight) + paddingTop)}
-
+    
     render(){
         const paddingTop = 16;
         const paddingRight = 64;
@@ -109,7 +109,7 @@ export default class BarChart extends AbstractChart {
                         paddingTop,
                         paddingRight
                     })}
-                    {this.renderBarTops({
+                    {this.renderLabelCards({
                         ...config,
                         data: data,
                         paddingRight,

@@ -5,7 +5,6 @@ import Item from '../../component/LegendList/Item';
 import LegendList from '../../component/LegendList/LegendList';
 import moment from 'moment';
 import Layout from '../Layout/Layout';
-//import { BarChart } from 'react-native-chart-kit';
 import BarChart from '../../component/Chart/BarChart';
 
 import { TRACKING_DATA } from './test-data.js';
@@ -15,19 +14,13 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 export default class Tracking extends Component {
 
   state = {
-    data: [
-      250,
-      400,
-      350,
-      752,
-      940,
-    ],
+    data: [20, 45, 28, 80, 99],
     labels: [
       { title: 'APR', description: '8-15'},
       { title: 'APR', description: '16-22' },
       { title: 'APR', description: '23-30' },
       { title: 'MAY', description: '1-7' },
-      { title: 'MAY', description: '8-15' },
+      { title: 'MAY', description: '8-15' }
     ],
   }
   render() {
@@ -79,10 +72,40 @@ export default class Tracking extends Component {
   }
 }
 
+
+
+
+
+/*
+<LineChart
+                data={this.state.datasets}
+                labels={this.state.labels}
+                width={SCREEN_WIDTH * 0.93} 
+                height={425}
+                chartConfig={{
+                  color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                }}
+                bezier
+                style={{
+                  marginVertical: 8,
+                  borderRadius: 16
+                }}
+              />
+              */
 /*
               <Item title='FOOD' color={['#DDD2BB', '#FD9722']}/>
               <Item title='TRANSPORTATION' color={['#F82279', '#934CDB']}/>
               <Item title='HOME' color={['#5189DC', '#944BDB']}/>
+*/
+
+/*
+data: [
+  3000,
+  400,
+  125,
+  752,
+  940,
+],
 */
 
 const styles = StyleSheet.create({
