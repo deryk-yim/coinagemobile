@@ -1,14 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createDrawerNavigator } from 'react-navigation';
+import Login from './container/Login';
+import Register from './container/Register';
 import Home from './container/Home/index';
 import AmountScreen from './container/AddTransaction/AmountScreen';
 import CategoryScreen from './container/AddTransaction/CategoryScreen';
 import Tracking from './container/Tracking/index';
 import MonthlyDetail from './container/MonthlyDetail/index';
-import SideMenu from './container/Layout/SideMenu';
+import SideMenu from './component/Layout/SideMenu';
 
 const routes = {
+  Login: {
+    label: 'LOGIN',
+    sideMenu: false,
+    screen: Login,
+  },
+  Register: {
+    label: 'REGISTER',
+    sideMenu: false,
+    screen: Register,
+  },
   Home: {
     label: 'HOME',
     sideMenu: false,
@@ -56,7 +68,7 @@ const routes = {
   },
 };
 
-const content = ({ navigation }) => (
+const Sidebar = ({ navigation }) => (
   <SideMenu
     navigation={navigation}
     routes={routes}
@@ -64,13 +76,14 @@ const content = ({ navigation }) => (
 );
 
 export default createDrawerNavigator(
-  routes, {
-    initialRouteName: 'MonthlyDetail',
-    contentComponent: content,
+  routes,
+  {
+    initialRouteName: 'Register',
+    contentComponent: Sidebar,
   },
 );
 
-content.propTypes = {
+Sidebar.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,

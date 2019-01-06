@@ -7,6 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "accounting-js": "^1.1.1",
+    "axios": "^0.18.0",
     "lottie-react-native": "^2.3.2",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",

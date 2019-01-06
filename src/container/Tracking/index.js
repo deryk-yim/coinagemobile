@@ -4,7 +4,7 @@ import Svg, { Path, Polygon } from 'react-native-svg';
 import Item from '../../component/LegendList/Item';
 import LegendList from '../../component/LegendList/LegendList';
 import moment from 'moment';
-import Layout from '../Layout/Layout';
+import Layout from '../../component/Layout';
 import BarChart from '../../component/Chart/BarChart';
 
 import { TRACKING_DATA } from './test-data.js';
@@ -30,7 +30,6 @@ export default class Tracking extends Component {
         <Item title={data.category} />
       );
     });
-
     return (
       <Layout navigation={this.props.navigation}>
         <View style={[container, { flex: 1, width: SCREEN_WIDTH }]}>

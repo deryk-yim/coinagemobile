@@ -20,5 +20,4 @@ const configureStore = createStore(
   reducers,
   applyMiddleware(loggerMiddleware),
 );
-console.log(configureStore);
 export default configureStore;

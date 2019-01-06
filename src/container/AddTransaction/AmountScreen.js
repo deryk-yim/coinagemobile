@@ -1,48 +1,43 @@
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import Knob from '../../component/Knob/Knob';
-import Circle from '../../component/Circle/Circle';
-import Layout from '../Layout/Layout';
-
-const SCREEN_WIDTH = Dimensions.get('window').width;
+import Knob from '../../component/Knob';
+import Layout from '../../component/Layout';
 
 export default class AmountScreen extends PureComponent {
-    constructor(props) {
-        super(props)
-        this.state = {
-            value: 0,
-        }
-        console.log(this.props)
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+    };
+  }
 
-    render() {
-        return (
-            <Layout navigation={this.props.navigation}>
-                <Circle size={SCREEN_WIDTH * 0.6375}>
-                    <Knob
-                        fontSize={32}
-                        textColor={'#ffffff'}
-                        fullRotationValue={50}
-                        value={this.state.value}
-                        borderStrokeColor={'transparent'}
-                        indicatorColor={'#ffffff'}
-                        showIndicator={true}
-                        indicatorRadius={5}
-                        indicatorOrbitRadius={0.75}
-                        onValueChange={(value) => {
-                            this.setState({ value: value })
-                        }}
-                    />
-                </Circle>
-            </Layout>
-        )
-    }
+  render() {
+    const { value } = this.state;
+    const { navigation } = this.props;
+    return (
+      <Layout navigation={navigation}>
+        <Knob
+          fontSize={24}
+          showIndicator
+          backgroundColor="transparent"
+          borderStrokeColor="#CCCCCC"
+          borderStrokeWidth={3}
+          indicatorColor="#6666ff"
+          indicatorRadius={15}
+          indicatorStrokeColor="#FFFFFF"
+          indicatorStrokeWidth={3}
+          indicatorOrbitRadius={0.75}
+          fullRotationValue={50}
+          value={value}
+          onValueChange={(val) => {
+            this.setState({ value: val });
+          }}
+        />
+      </Layout>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-})
+AmountScreen.propTypes = {
+  navigation: PropTypes.func.isRequired,
+};

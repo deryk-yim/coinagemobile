@@ -1,33 +1,34 @@
 import React from 'react';
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-const Button = (props) => {
-    return (
-        <TouchableOpacity style={styles.button}>
-            <Text style={styles.text}>
-                {props.label}
-            </Text>
-        </TouchableOpacity>
-    );
-};
-
 const styles = StyleSheet.create({
-    button:{
-        borderColor: '#000000',
-        borderWidth: 0.5,
-    },
-    text:{
-        textAlign: 'center'
-    }
-})
+  button: {
+    borderColor: '#000000',
+    borderWidth: 0.5,
+  },
+  text: {
+    textAlign: 'center',
+  },
+});
+
+const Button = (props) => {
+  const { label } = props;
+  const { button, text } = styles;
+  return (
+    <TouchableOpacity style={button}>
+      <Text style={text}>
+        {label}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+export default Button;
 
 Button.propTypes = {
-    label: PropTypes.string
-}
+  label: PropTypes.string,
+};
 
 Button.defaultProps = {
-    label: 'Button'
-}
-
-export default Button;
+  label: 'Button',
+};

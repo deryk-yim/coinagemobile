@@ -1,36 +1,34 @@
 import React, { PureComponent } from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-import { THEME_COLOR } from '../../constants/theme.js';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class Background extends PureComponent {
-    static propTypes = {
-        colors: PropTypes.arrayOf(PropTypes.string),
-        start: PropTypes.object,
-        end: PropTypes.object,
-        style: PropTypes.number
-    }
-    static defaultProps = {
-        colors: THEME_COLOR.backgroundGradient,
-        start: { x: 0.0, y: 0.7 },
-        end: { x: 1.0, y: 0.7 }
-    }
-    render() {
-        const { colors, start, end, style } = this.props; 
-        return (
-            <LinearGradient
-                colors={colors}
-                start={start}
-                end={end}
-                style={[{ 
-                    flex: 1, 
-                    justifyContent: 'center', 
-                    alignItems: 'center', 
-                    position: 'relative' }, 
-                    style]}
-            >
-                {this.props.children}
-            </LinearGradient>
-        );
-    }
+  render() {
+    const { color, style, children } = this.props;
+    return (
+      <View
+        colors={color}
+        style={[{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'relative',
+        }, style]}
+      >
+        {children}
+      </View>
+    );
+  }
 }
+
+Background.propTypes = {
+  color: PropTypes.string,
+  style: PropTypes.number,
+  children: PropTypes.node,
+};
+
+Background.defaultProps = {
+  color: '#FFFFFF',
+  style: null,
+  children: null,
+};

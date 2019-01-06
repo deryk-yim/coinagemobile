@@ -14,7 +14,16 @@
         "import/no-named-as-default": 0,
         "import/named": 0,
         "react/jsx-filename-extension": 0,
-        "react/prefer-stateless-function": 1
+        "react/prefer-stateless-function": 1,
+        "linebreak-style": "off",
+        "react/prop-types": [
+            "error",
+            {
+                "ignore": [
+                    "navigation"
+                ]
+            }
+        ]
     },
     "parserOptions": {
         "ecmaFeatures": {

@@ -1,49 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
-export default class Circle extends Component {
-    static propTypes = {
-        size: PropTypes.number,
-        backgroundColor: PropTypes.string,
-        backgroundColors: PropTypes.arrayOf(PropTypes.string),
-        opacity: PropTypes.number,
-        fill: PropTypes.bool,
-    }
+const Circle = (props) => {
+  const {
+    backgroundColor, size, opacity,
+  } = props;
+  const styles = StyleSheet.create({
+    circle: {
+      backgroundColor,
+      height: size,
+      width: size,
+      borderRadius: size / 2,
+      justifyContent: 'center',
+      alignItems: 'center',
+      opacity,
+    },
+  });
+  const { children } = props;
+  const { circle } = styles;
 
-    static defaultProps = {
-        size: 300,
-        fill: true,
-        backgroundColor: '#FFFFFF',
-        backgroundColors: ['#F82279', '#E82887', '#CE33A1', '#A643C8','#934CDB'],
-    }
-    //backgroundColors: ['#F5227A','#E82887','#CE33A1','#A643C8','#944BD8'],
+  return (
+    <View
+      style={circle}
+    >
+      {children}
+    </View>
+  );
+};
 
-    render(){
-        return(
-            <LinearGradient colors={this.props.backgroundColors}
-                style={this.styles.circle}>
-                { this.props.children }
-            </LinearGradient>
-        );
-    }
+export default Circle;
 
-    styles = StyleSheet.create({
-        circle: {
-            backgroundColor: this.props.backgroundColorX,
-            height: this.props.size,
-            width: this.props.size,
-            borderRadius: this.props.size / 2,
-            justifyContent: 'center',
-            alignItems: 'center',
-            opacity: this.props.opacity,
-        },
-        linearGradient: {
-            flex: 1,
-            paddingLeft: 15,
-            paddingRight: 15,
-            borderRadius: 5,
-        }
-    });
-}
+Circle.propTypes = {
+  size: PropTypes.number,
+  backgroundColor: PropTypes.string,
+  opacity: PropTypes.number,
+  children: PropTypes.node,
+};
+
+Circle.defaultProps = {
+  size: 300,
+  backgroundColor: '#FFFFFF',
+  opacity: 1,
+  children: null,
+};
